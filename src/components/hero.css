@@ -19,7 +19,9 @@
 @media (max-width: 899px), (max-aspect-ratio: 4/5) {
   .hero__film {
     object-fit: contain;
-    object-position: 50% 50%;
+    /* Biased up, not centred: the shorter mobile hero only has so much letterbox space to share,
+       and the intro text sitting near the bottom needs more of it than the top does. */
+    object-position: 50% 28%;
   }
 }
 

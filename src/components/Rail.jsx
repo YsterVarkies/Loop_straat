@@ -23,7 +23,12 @@ export default function Rail({ home = false }) {
       setDocked(true);
       return undefined;
     }
-    const check = () => setDocked(window.scrollY > window.innerHeight * 0.6);
+    // Mobile's hero is much shorter than desktop's, and the transparent bar over busy video is
+    // harder to read there, so it solidifies much sooner — a small scroll, not most of the hero.
+    const check = () => {
+      const fraction = window.innerWidth <= 899 ? 0.12 : 0.6;
+      setDocked(window.scrollY > window.innerHeight * fraction);
+    };
     check();
     window.addEventListener('scroll', check, { passive: true });
     window.addEventListener('resize', check);
