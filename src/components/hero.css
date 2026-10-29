@@ -84,7 +84,8 @@
   }
 
   .hero__toggle {
-    top: 8px;
+    /* Below the fixed rail (and its hamburger button), not under it. */
+    top: calc(var(--rail-h) + 14px);
     bottom: auto;
   }
 }
