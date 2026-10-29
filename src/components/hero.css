@@ -67,6 +67,14 @@
 }
 
 @media (max-width: 899px) {
+  /* The film is letterboxed here (object-fit: contain, above), so a full 100svh hero was mostly
+     black bars above and below a much narrower strip of video. A shorter hero keeps the bars but
+     cuts how much of the screen they eat before the rest of the page starts. */
+  .hero {
+    height: 62vh;
+    min-height: 420px;
+  }
+
   .hero__intro {
     top: auto;
     right: var(--margin);

@@ -9,6 +9,12 @@ html {
   text-size-adjust: 100%;
   background: var(--bg);
   color-scheme: dark;
+  overflow-x: clip;
+  /* Belt and braces against sideways panning on phones: no content should ever be wider than
+     the viewport, but this also blocks the browser's own horizontal swipe/bounce gesture, which
+     can trigger even with no real overflow. */
+  overscroll-behavior-x: none;
+  touch-action: pan-y pinch-zoom;
 }
 
 body {
@@ -23,6 +29,7 @@ body {
   font-variant-numeric: lining-nums;
   -webkit-font-smoothing: antialiased;
   overflow-x: clip;
+  overscroll-behavior-x: none;
 }
 
 img,

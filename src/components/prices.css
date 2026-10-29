@@ -37,6 +37,19 @@
   line-height: 1.2;
 }
 
+/* The Specials sections (home and events pages share this id): "Specials" itself reads much
+   bigger than everything under it, so the group names (Happy hour, On the beer board, …) and
+   the items step back down to a quieter size. */
+#specials-title {
+  font-size: clamp(3.5rem, 2.6rem + 4.5vw, 7rem);
+  line-height: 0.95;
+}
+
+#specials .prices__group-title {
+  font-size: 22px;
+  font-weight: 600;
+}
+
 .prices__note {
   margin-top: 4px;
   font-size: var(--step-small);
@@ -67,12 +80,10 @@
   white-space: nowrap;
 }
 
-/* The Specials sections (home and events pages share this id) read a little bolder and bigger
-   than the full menu, so the blackboard items stand out. */
 #specials .prices__name,
 #specials .prices__price {
   font-weight: 700;
-  font-size: 1.15em;
+  font-size: 0.95em;
 }
 
 .prices__desc {

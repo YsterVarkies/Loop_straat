@@ -164,8 +164,18 @@
     margin-inline: calc(var(--margin) * -1);
   }
 
+  /* On its own row here (not spanning intro+rows the way the desktop column does), the band's
+     containing block needs its own height to have anything to stick through. */
+  .whats-on__photo-col {
+    min-height: 110vh;
+  }
+
   .whats-on__rows {
     padding-top: 16px;
+    /* The mobile photo is a short 38svh band, not the full screen, so it needs far less buffer
+       below the list than desktop's sticky sidebar does — 70vh there was leaving a big blank
+       gap here before the next section. */
+    padding-bottom: 12vh;
   }
 
   .whats-on__title {
