@@ -1,0 +1,38 @@
+/* Loop St. design tokens. Direction: the dark room. Ink is the cream of the Loop logo. */
+:root {
+  --bg: #0c0a08;
+  --surface: #181512;
+  --surface-2: #221d18;
+  --ink: #eeece9;
+  --muted: #a59f97;
+  --accent: #c9a45a;
+  --accent-hover: #d8b56c;
+  --accent-ink: #0c0a08;
+  --field: #e3e1dd;
+  --field-ink: #0c0a08;
+  --field-muted: #574f45;
+  --scrim: rgba(12, 10, 8, 0.38);
+
+  --font: 'Erode', 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
+
+  /* The five type steps. Nothing on the site uses another size. */
+  --step-small: clamp(0.8125rem, 0.79rem + 0.1vw, 0.875rem);
+  --step-body: clamp(1.0625rem, 1rem + 0.25vw, 1.1875rem);
+  --step-lead: clamp(1.375rem, 1.2rem + 0.55vw, 1.75rem);
+  --step-head: clamp(2rem, 1.6rem + 0.9vw, 2.75rem);
+  --step-display: clamp(3.25rem, 0.5rem + 8.6vw, 10.5rem);
+
+  --margin: clamp(16px, 2.2vw, 32px);
+  --gap: clamp(16px, 1.8vw, 28px);
+  --section: clamp(112px, 13vw, 200px);
+  --rail-h: 108px;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-inout: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+@media (max-width: 899px) {
+  :root {
+    --rail-h: 76px;
+  }
+}

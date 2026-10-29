@@ -1,0 +1,246 @@
+{
+  "the-bar": {
+    "w": 679,
+    "h": 509,
+    "widths": [
+      480,
+      679
+    ],
+    "fallback": 679,
+    "color": "#493025"
+  },
+  "the-tree": {
+    "w": 679,
+    "h": 375,
+    "widths": [
+      480,
+      679
+    ],
+    "fallback": 679,
+    "color": "#2c2c25"
+  },
+  "the-steps": {
+    "w": 674,
+    "h": 509,
+    "widths": [
+      480,
+      674
+    ],
+    "fallback": 674,
+    "color": "#201c17"
+  },
+  "courtyard-beer-board": {
+    "w": 369,
+    "h": 511,
+    "widths": [
+      369
+    ],
+    "fallback": 369,
+    "color": "#4b4f4d"
+  },
+  "bar-red-wine": {
+    "w": 675,
+    "h": 509,
+    "widths": [
+      480,
+      675
+    ],
+    "fallback": 675,
+    "color": "#4f2921"
+  },
+  "bar-at-night": {
+    "w": 2048,
+    "h": 1365,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600,
+      2048
+    ],
+    "fallback": 1200,
+    "color": "#27140c"
+  },
+  "courtyard-function": {
+    "w": 2048,
+    "h": 1367,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600,
+      2048
+    ],
+    "fallback": 1200,
+    "color": "#241815"
+  },
+  "white-wine-table": {
+    "w": 1067,
+    "h": 1067,
+    "widths": [
+      480,
+      800,
+      1067
+    ],
+    "fallback": 1067,
+    "color": "#312319"
+  },
+  "tree-acoustic-set": {
+    "w": 2048,
+    "h": 1365,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600,
+      2048
+    ],
+    "fallback": 1200,
+    "color": "#1e1d16"
+  },
+  "deck-applause": {
+    "w": 2048,
+    "h": 1365,
+    "widths": [
+      480,
+      800,
+      1200,
+      1600,
+      2048
+    ],
+    "fallback": 1200,
+    "color": "#201c19"
+  },
+  "stage-lamp": {
+    "w": 1440,
+    "h": 960,
+    "widths": [
+      480,
+      800,
+      1200,
+      1440
+    ],
+    "fallback": 1200,
+    "color": "#1e1916"
+  },
+  "courtyard-guitarist": {
+    "w": 1440,
+    "h": 960,
+    "widths": [
+      480,
+      800,
+      1200,
+      1440
+    ],
+    "fallback": 1200,
+    "color": "#251e1a"
+  },
+  "accordion-duo": {
+    "w": 1440,
+    "h": 960,
+    "widths": [
+      480,
+      800,
+      1200,
+      1440
+    ],
+    "fallback": 1200,
+    "color": "#271a17"
+  },
+  "sweet-treats-board": {
+    "w": 1440,
+    "h": 1920,
+    "widths": [
+      480,
+      800,
+      1200,
+      1440
+    ],
+    "fallback": 1200,
+    "color": "#36281d"
+  },
+  "after-the-show": {
+    "w": 1440,
+    "h": 960,
+    "widths": [
+      480,
+      800,
+      1200,
+      1440
+    ],
+    "fallback": 1200,
+    "color": "#1b1b13"
+  },
+  "two-guitars": {
+    "w": 1440,
+    "h": 960,
+    "widths": [
+      480,
+      800,
+      1200,
+      1440
+    ],
+    "fallback": 1200,
+    "color": "#392c1e"
+  },
+  "listening": {
+    "w": 1440,
+    "h": 960,
+    "widths": [
+      480,
+      800,
+      1200,
+      1440
+    ],
+    "fallback": 1200,
+    "color": "#2f251a"
+  },
+  "duo-closeup": {
+    "w": 1440,
+    "h": 960,
+    "widths": [
+      480,
+      800,
+      1200,
+      1440
+    ],
+    "fallback": 1200,
+    "color": "#47372a"
+  },
+  "beer-board": {
+    "w": 1440,
+    "h": 960,
+    "widths": [
+      480,
+      800,
+      1200,
+      1440
+    ],
+    "fallback": 1200,
+    "color": "#25241a"
+  },
+  "photographer": {
+    "w": 1440,
+    "h": 960,
+    "widths": [
+      480,
+      800,
+      1200,
+      1440
+    ],
+    "fallback": 1200,
+    "color": "#412f21"
+  },
+  "front-row": {
+    "w": 1440,
+    "h": 960,
+    "widths": [
+      480,
+      800,
+      1200,
+      1440
+    ],
+    "fallback": 1200,
+    "color": "#35291e"
+  }
+}

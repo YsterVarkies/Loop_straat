@@ -1,0 +1,144 @@
+/* Two arrangements per pass, mirrored on the second pass. Offsets come from two values only: 30vh and 22vh. */
+.stagger {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: var(--gap);
+  align-items: start;
+}
+
+.stagger__item {
+  margin-bottom: 22vh;
+}
+
+.stagger__frame {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  background: var(--surface);
+}
+
+button.stagger__frame {
+  cursor: zoom-in;
+}
+
+.stagger__frame picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.stagger__frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s var(--ease-out);
+}
+
+button.stagger__frame:hover img {
+  transform: scale(1.03);
+}
+
+.stagger__caption {
+  margin-top: 10px;
+  font-size: var(--step-small);
+  color: var(--muted);
+}
+
+/* Screen one: a 3:4 portrait on the left, a 5:4 on the right starting 30vh lower. */
+.stagger__item--0 {
+  grid-column: 1 / span 4;
+}
+.stagger__item--0 .stagger__frame {
+  aspect-ratio: 3 / 4;
+}
+.stagger__item--1 {
+  grid-column: 7 / span 6;
+  margin-top: 30vh;
+}
+.stagger__item--1 .stagger__frame {
+  aspect-ratio: 5 / 4;
+}
+
+/* Screen two: a 3:2 landscape in columns 6 to 11, a small 4:5 in columns 2 to 4, 22vh lower. */
+.stagger__item--2 {
+  grid-column: 6 / span 6;
+}
+.stagger__item--2 .stagger__frame {
+  aspect-ratio: 3 / 2;
+}
+.stagger__item--3 {
+  grid-column: 2 / span 3;
+  margin-top: 6vh;
+}
+.stagger__item--3 .stagger__frame {
+  aspect-ratio: 4 / 5;
+}
+
+/* The second pass, mirrored. */
+.stagger__item--4 {
+  grid-column: 9 / span 4;
+}
+.stagger__item--4 .stagger__frame {
+  aspect-ratio: 3 / 4;
+}
+.stagger__item--5 {
+  grid-column: 1 / span 6;
+  margin-top: 30vh;
+}
+.stagger__item--5 .stagger__frame {
+  aspect-ratio: 5 / 4;
+}
+.stagger__item--6 {
+  grid-column: 2 / span 6;
+}
+.stagger__item--6 .stagger__frame {
+  aspect-ratio: 3 / 2;
+}
+.stagger__item--7 {
+  grid-column: 9 / span 3;
+  margin-top: 22vh;
+}
+.stagger__item--7 .stagger__frame {
+  aspect-ratio: 4 / 5;
+}
+
+/* Grid rows: each pair shares a row so the second sits lower than the first. */
+.stagger__item--0,
+.stagger__item--1 {
+  grid-row: span 1;
+}
+
+@media (max-width: 899px) {
+  .stagger {
+    display: block;
+  }
+
+  .stagger__item {
+    margin: 0 0 64px !important;
+  }
+
+  .stagger__item:nth-child(4n + 1) {
+    width: 70%;
+  }
+  .stagger__item:nth-child(4n + 2) {
+    width: 84%;
+    margin-left: auto !important;
+  }
+  .stagger__item:nth-child(4n + 3) {
+    width: 56%;
+  }
+  .stagger__item:nth-child(4n + 4) {
+    width: calc(100% + var(--margin) * 2);
+    margin-left: calc(var(--margin) * -1) !important;
+  }
+  .stagger__item:nth-child(4n + 4) .stagger__caption {
+    padding-inline: var(--margin);
+  }
+
+  .stagger__item .stagger__frame {
+    aspect-ratio: 4 / 5 !important;
+  }
+  .stagger__item:nth-child(4n + 4) .stagger__frame {
+    aspect-ratio: 3 / 2 !important;
+  }
+}

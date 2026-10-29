@@ -1,0 +1,118 @@
+.prices__head {
+  grid-column: 1 / span 3;
+  display: grid;
+  align-content: start;
+  gap: 24px;
+}
+
+.prices__intro {
+  color: var(--muted);
+}
+
+.prices__photo {
+  margin-top: 16px;
+}
+
+.prices__photo img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.prices__list {
+  grid-column: 5 / span 8;
+  columns: 2;
+  column-gap: 64px;
+}
+
+.prices__group {
+  break-inside: avoid;
+  margin-bottom: 52px;
+}
+
+.prices__group-title {
+  font-size: 50px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.prices__note {
+  margin-top: 4px;
+  font-size: var(--step-small);
+  color: var(--muted);
+}
+
+.prices__items {
+  margin-top: 18px;
+}
+
+.prices__items {
+  display: grid;
+  gap: 18px;
+}
+
+.prices__row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.prices__name {
+  font-weight: 500;
+}
+
+.prices__price {
+  white-space: nowrap;
+}
+
+/* The Specials sections (home and events pages share this id) read a little bolder and bigger
+   than the full menu, so the blackboard items stand out. */
+#specials .prices__name,
+#specials .prices__price {
+  font-weight: 700;
+  font-size: 1.15em;
+}
+
+.prices__desc {
+  margin-top: 4px;
+  max-width: 38ch;
+  color: var(--muted);
+}
+
+.prices__tags {
+  margin-top: 4px;
+  font-size: var(--step-small);
+  color: var(--accent);
+}
+
+@media (max-width: 1099px) {
+  .prices__head {
+    grid-column: 1 / span 4;
+  }
+
+  .prices__list {
+    grid-column: 5 / -1;
+    columns: 1;
+  }
+}
+
+@media (max-width: 899px) {
+  .prices__head,
+  .prices__list {
+    grid-column: 1 / -1;
+  }
+
+  .prices__photo {
+    width: 60%;
+  }
+
+  .prices__list {
+    margin-top: 48px;
+  }
+
+  .prices__group {
+    margin-bottom: 40px;
+  }
+}

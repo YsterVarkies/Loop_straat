@@ -1,0 +1,179 @@
+.whats-on--first {
+  padding-top: clamp(72px, 8vw, 120px);
+}
+
+.whats-on__when.t-small {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.whats-on__name.t-lead{
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.whats-on__grid {
+  align-items: start;
+}
+
+.whats-on__intro {
+  grid-column: 7 / span 6;
+  grid-row: 1;
+  padding-top: 2vh;
+}
+
+.whats-on__rows {
+  grid-column: 7 / span 6;
+  grid-row: 2;
+  /* Extra room below the list itself so the sticky photo beside it has enough containing-block
+     height to stay in place for the whole list, not release before the last rows scroll past. */
+  padding-bottom: 70vh;
+}
+
+/* Spans and stretches to the full combined height of the intro and the row list beside it,
+   giving the sticky photo inside real room to stick for (not just a sliver of) the scroll. */
+.whats-on__photo-col {
+  grid-column: 1 / span 5;
+  grid-row: 1 / span 2;
+  align-self: stretch;
+}
+
+.whats-on__photo {
+  position: sticky;
+  top: var(--rail-h);
+  height: calc(100svh - var(--rail-h));
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.whats-on__photo picture,
+.whats-on__photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.whats-on__photo picture {
+  opacity: 0;
+  transform: scale(1.04);
+  transition:
+    opacity 0.6s ease,
+    transform 1.6s var(--ease-out);
+}
+
+.whats-on__photo picture.is-on {
+  opacity: 1;
+  transform: none;
+}
+
+/* A show's own poster is shown whole, never cropped. */
+.whats-on__poster img {
+  object-fit: contain;
+}
+
+.whats-on__title {
+  margin-bottom: 40px;
+}
+
+.whats-on__tonight {
+  margin-bottom: 48px;
+}
+
+.whats-on__row {
+  padding-block: 4px;
+}
+
+/* Taller rows give the sticky photo more scroll distance to cross-fade through,
+   so the list doesn't rush past before you can read it. */
+.whats-on__head {
+  display: flex;
+  width: 100%;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 112px;
+  padding-block: 30px;
+  text-align: left;
+}
+
+.whats-on__name {
+  color: var(--muted);
+  transition: color 0.3s ease;
+}
+
+.whats-on__when {
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.whats-on__row.is-active .whats-on__name {
+  color: var(--ink);
+}
+
+.whats-on__head:hover .whats-on__name {
+  color: var(--ink);
+}
+
+.whats-on__desc {
+  display: grid;
+  gap: 10px;
+  max-width: 40ch;
+  padding-bottom: 44px;
+  animation: desc-in 0.6s var(--ease-out) both;
+}
+
+.whats-on__meta {
+  color: var(--accent);
+}
+
+.whats-on__more {
+  margin-top: 40px;
+}
+
+@keyframes desc-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+/* Phone: heading and tonight's line first, then the photograph pinned as a band while the list scrolls beneath. */
+@media (max-width: 899px) {
+  .whats-on__intro,
+  .whats-on__rows,
+  .whats-on__photo-col {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+
+  .whats-on__intro {
+    padding-top: 0;
+  }
+
+  .whats-on__tonight {
+    margin-bottom: 36px;
+  }
+
+  .whats-on__photo {
+    top: var(--rail-h);
+    z-index: 2;
+    aspect-ratio: auto;
+    height: 38svh;
+    margin-inline: calc(var(--margin) * -1);
+  }
+
+  .whats-on__rows {
+    padding-top: 16px;
+  }
+
+  .whats-on__title {
+    margin-bottom: 28px;
+  }
+
+  .whats-on__head {
+    min-height: 88px;
+    padding-block: 22px;
+  }
+}

@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en-ZA">
+  <head>
+    <meta charset="utf-8" />
+    <title>Loop St.</title>
+    <script>
+      // GitHub Pages serves this file for any path it doesn't recognise — which, for a
+      // client-side-routed app, is every real page except the root (a direct hit on /menu,
+      // a refresh on /events, a shared link). It hands the real path back to index.html as a
+      // query param; the restore script there puts it back before React Router ever runs.
+      var base = '/Loop_straat/';
+      var rest = location.pathname.slice(base.length) + location.search + location.hash;
+      location.replace(base + '?p=' + encodeURIComponent(rest));
+    </script>
+  </head>
+  <body></body>
+</html>

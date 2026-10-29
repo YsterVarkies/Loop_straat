@@ -1,0 +1,68 @@
+/* Shared bits of the home page sections that have no component of their own. */
+
+.heading__split {
+  display: inline-block;
+}
+
+main:focus {
+  outline: none;
+}
+
+.prices__more {
+  margin-top: 8px;
+  break-before: avoid;
+}
+
+.nights__head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px 32px;
+  margin-bottom: 96px;
+}
+
+.home-about__head {
+  grid-column: 1 / span 4;
+}
+
+.home-about__head .heading {
+  max-width: 12ch;
+}
+
+.home-about__body {
+  grid-column: 5 / span 8;
+  display: grid;
+  gap: 32px;
+  align-content: start;
+}
+
+.home-about__text {
+  max-width: 56ch;
+  color: var(--muted);
+}
+
+@media (max-width: 899px) {
+  .nights__head {
+    margin-bottom: 56px;
+  }
+
+  .home-about__head,
+  .home-about__body {
+    grid-column: 1 / -1;
+  }
+
+  .home-about__body {
+    margin-top: 32px;
+  }
+
+  .home-about__body .statement__text,
+  .home-about__text {
+    max-width: none;
+  }
+}
+
+/* The rail is position: fixed, so every page but the home hero clears it with top padding. */
+.has-fixed-rail {
+  padding-top: var(--rail-h);
+}

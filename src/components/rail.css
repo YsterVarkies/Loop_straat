@@ -1,0 +1,236 @@
+.rail {
+  position: fixed;
+  top: 0;
+  z-index: 40;
+  background: var(--bg);
+  transition: background-color 0.5s ease;
+  width: 100%;
+}
+
+/* On the home page the rail starts on a scrim over the film, then solidifies once you scroll past it. */
+.rail--home {
+  /*background: var(--scrim);*/
+    background: transparent;
+}
+
+.rail--home.is-docked {
+  background: var(--bg);
+}
+
+.rail__bar {
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  align-items: center;
+  column-gap: calc(var(--gap) * 1.4);
+  height: var(--rail-h);
+  padding-inline: var(--margin);
+}
+
+.rail__brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  min-width: 0;
+}
+
+.rail__logo {
+  width: 64px;
+  height: 64px;
+  flex: none;
+  transition: transform 0.6s var(--ease-out);
+}
+
+.rail--home .rail__logo {
+  width: 96px;
+  height: 96px;
+}
+
+.rail__brand:hover .rail__logo {
+  transform: rotate(-8deg) scale(1.04);
+}
+
+.rail__title {
+  font-size: var(--step-lead);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  white-space: nowrap;
+}
+
+.rail--home .rail__title {
+  font-size: var(--step-lead);
+  letter-spacing: -0.02em;
+}
+
+.rail__nav {
+  justify-self: end;
+}
+
+.rail__nav ul {
+  display: flex;
+  gap: clamp(18px, 2vw, 30px);
+}
+
+.rail__nav a {
+  font-size: var(--step-body);
+  font-weight: 500;
+}
+
+.rail__nav a.active {
+  color: var(--accent);
+}
+
+.rail__toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+}
+
+.rail__toggle-bars,
+.rail__toggle-bars::after {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--ink);
+  transition: transform 0.4s var(--ease-out);
+}
+
+.rail__toggle-bars {
+  position: relative;
+  transform: translateY(-4px);
+}
+
+.rail__toggle-bars::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 16px;
+}
+
+.rail__toggle:hover .rail__toggle-bars::after {
+  transform: scaleX(1.5);
+  transform-origin: left;
+}
+
+.rail__panel {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 0 var(--margin) 32px;
+  background: var(--bg);
+  overflow-y: auto;
+}
+
+.rail__panel[hidden] {
+  display: none;
+}
+
+.rail__panel-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: var(--rail-h);
+}
+
+.rail__panel-name {
+  font-size: var(--step-lead);
+  font-weight: 500;
+}
+
+.rail__close {
+  font-size: var(--step-body);
+  min-height: 44px;
+}
+
+.rail__panel-links {
+  display: grid;
+  gap: 10px;
+}
+
+.rail__panel-links a {
+  display: inline-block;
+  padding-block: 4px;
+  text-decoration: none;
+  animation: panel-in 0.7s var(--ease-out) both;
+}
+
+.rail__panel-links li:nth-child(2) a { animation-delay: 0.04s; }
+.rail__panel-links li:nth-child(3) a { animation-delay: 0.08s; }
+.rail__panel-links li:nth-child(4) a { animation-delay: 0.12s; }
+.rail__panel-links li:nth-child(5) a { animation-delay: 0.16s; }
+.rail__panel-links li:nth-child(6) a { animation-delay: 0.2s; }
+
+.rail__panel-links a.active {
+  color: var(--accent);
+}
+
+.rail__panel-foot {
+  display: grid;
+  gap: 16px;
+  margin-top: auto;
+  max-width: 36ch;
+}
+
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+}
+
+html.is-locked {
+  overflow: hidden;
+}
+
+@media (max-width: 899px) {
+  .rail__bar {
+    grid-template-columns: 1fr auto;
+  }
+
+  .rail__nav,
+  .rail__action {
+    display: none !important;
+  }
+
+  .rail__toggle {
+    display: inline-flex;
+  }
+
+  .rail__logo,
+  .rail--home .rail__logo {
+    width: 52px;
+    height: 52px;
+  }
+
+  .rail__brand {
+    gap: 12px;
+  }
+
+  .rail--home .rail__what {
+    display: block;
+    white-space: nowrap;
+  }
+
+  .rail--home .rail__title {
+    white-space: normal;
+    font-size: var(--step-lead);
+    line-height: 1.05;
+  }
+
+  .rail__bar {
+    column-gap: 12px;
+  }
+}
+
+@media (max-width: 559px) {
+  .rail:not(.rail--home) .rail__what {
+    display: none;
+  }
+}

@@ -1,0 +1,81 @@
+.story__head {
+  grid-column: 1 / span 4;
+}
+
+.story__body {
+  grid-column: 5 / span 8;
+  display: grid;
+  gap: 56px;
+}
+
+.story__columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap) 56px;
+}
+
+.willow__photo {
+  grid-column: 1 / span 6;
+}
+
+.willow__photo img {
+  width: 100%;
+  aspect-ratio: 5 / 4;
+  object-fit: cover;
+}
+
+.willow__text {
+  grid-column: 8 / span 5;
+  display: grid;
+  gap: 24px;
+  align-content: center;
+}
+
+.house__head {
+  grid-column: 1 / span 4;
+}
+
+.house__list {
+  grid-column: 5 / span 8;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px 56px;
+}
+
+.house__list dt {
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+.house__list dd {
+  margin: 0;
+  color: var(--muted);
+}
+
+.house__more {
+  grid-column: 5 / span 8;
+  margin-top: 48px;
+}
+
+@media (max-width: 899px) {
+  .story__head,
+  .story__body,
+  .willow__photo,
+  .willow__text,
+  .house__head,
+  .house__list,
+  .house__more {
+    grid-column: 1 / -1;
+  }
+
+  .story__body,
+  .willow__text,
+  .house__list {
+    margin-top: 40px;
+  }
+
+  .story__columns,
+  .house__list {
+    grid-template-columns: 1fr;
+  }
+}

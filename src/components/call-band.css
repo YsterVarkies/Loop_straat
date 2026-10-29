@@ -1,0 +1,87 @@
+.call {
+  margin-top: var(--section);
+  background: var(--field);
+  color: var(--field-ink);
+}
+
+.call ::selection {
+  background: var(--field-ink);
+  color: var(--field);
+}
+
+.call :focus-visible {
+  outline-color: var(--field-ink);
+}
+
+.call__inner {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100svh;
+  padding-block: clamp(28px, 4vw, 56px) clamp(24px, 3vw, 40px);
+}
+
+.call__lead {
+  max-width: 22ch;
+  font-weight: 500;
+}
+
+/* The number sits low and to the right, answering the sentence in the top-left corner. */
+.call__number {
+  align-self: end;
+  justify-self: end;
+  display: block;
+  margin-bottom: 12vh;
+  font-weight: 400;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.3s ease;
+}
+
+.call__number:hover {
+  color: #7a5a20;
+}
+
+.call__foot {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: end;
+  gap: 16px 32px;
+  font-size: var(--step-small);
+}
+
+.call__foot a {
+  text-decoration: none;
+}
+
+.call__social {
+  display: flex;
+  gap: 24px;
+}
+
+@media (max-width: 599px) {
+  .call__number {
+    justify-self: start;
+  }
+}
+
+@media (max-width: 899px) {
+  .call__inner {
+    min-height: 86svh;
+  }
+
+  .call__number {
+    margin-bottom: 8vh;
+  }
+
+  .call__foot {
+    flex-direction: column;
+    align-items: start;
+    font-size: var(--step-small);
+  }
+
+  .call__social {
+    gap: 20px;
+  }
+}

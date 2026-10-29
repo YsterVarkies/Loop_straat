@@ -1,0 +1,44 @@
+.menu-index {
+  padding-bottom: 6vh;
+}
+
+.menu-index__grid {
+  align-items: center;
+}
+
+.menu-index__text {
+  grid-column: 1 / span 5;
+  display: grid;
+  gap: 32px;
+  align-content: center;
+}
+
+.menu-index__intro {
+  color: var(--muted);
+  max-width: 44ch;
+}
+
+.menu-index__cta {
+  justify-self: start;
+}
+
+.menu-index__photo {
+  grid-column: 7 / span 6;
+}
+
+.menu-index__photo img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+@media (max-width: 899px) {
+  .menu-index__text,
+  .menu-index__photo {
+    grid-column: 1 / -1;
+  }
+
+  .menu-index__photo {
+    margin-top: 32px;
+  }
+}

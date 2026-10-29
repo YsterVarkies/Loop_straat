@@ -1,0 +1,87 @@
+.tonight {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 18px;
+}
+
+.tonight__status {
+  font-weight: 500;
+}
+
+.tonight__detail {
+  margin-top: 4px;
+  color: var(--muted);
+  max-width: 52ch;
+}
+
+.tonight__detail strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.tonight--large {
+  gap: 24px;
+}
+
+.candle__flame {
+  transform-origin: 20px 21px;
+  transform-box: view-box;
+}
+
+.candle.is-lit .candle__flame {
+  animation: flicker 2.6s ease-in-out infinite;
+}
+
+.candle.is-out .candle__flame {
+  opacity: 0;
+}
+
+.candle__smoke {
+  opacity: 0;
+  stroke-dasharray: 40;
+  stroke-dashoffset: 40;
+}
+
+.candle.is-out .candle__smoke {
+  animation: smoke 4s ease-out infinite;
+}
+
+@keyframes flicker {
+  0%,
+  100% {
+    transform: scale(1, 1) skewX(0deg);
+  }
+  20% {
+    transform: scale(0.96, 1.06) skewX(-2deg);
+  }
+  45% {
+    transform: scale(1.03, 0.95) skewX(1.5deg);
+  }
+  70% {
+    transform: scale(0.98, 1.03) skewX(-1deg);
+  }
+}
+
+@keyframes smoke {
+  0% {
+    opacity: 0;
+    stroke-dashoffset: 40;
+  }
+  30% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 0;
+    stroke-dashoffset: 0;
+    transform: translateY(-6px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .candle.is-out .candle__smoke {
+    opacity: 0.7;
+    stroke-dashoffset: 0;
+    animation: none;
+  }
+}
