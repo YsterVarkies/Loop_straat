@@ -167,6 +167,15 @@
 }
 
 @media (max-width: 899px) {
+  /* On a phone "Up the steps," sits against the right edge, before and after entering the arch. */
+  .arch-walk__half--top,
+  .arch-walk__title.is-entered .arch-walk__half--top {
+    left: auto;
+    right: var(--margin);
+    text-align: right;
+    transform: none;
+  }
+
   .arch-walk__captions {
     left: var(--margin);
     right: var(--margin);
