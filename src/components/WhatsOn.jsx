@@ -90,6 +90,7 @@ export default function WhatsOn({
               )
             )}
           </div>
+          <div className="whats-on__fade" aria-hidden="true" />
         </div>
         <div className="whats-on__rows">
             <ul className="whats-on__list" ref={listRef}>

@@ -73,6 +73,17 @@
   object-fit: contain;
 }
 
+/* Only used on phones, where the photo is a pinned band. */
+.whats-on__fade {
+  display: none;
+}
+
+@media (max-width: 899px) {
+  .whats-on__fade {
+    display: block;
+  }
+}
+
 .whats-on__title {
   margin-bottom: 40px;
 }
@@ -156,7 +167,25 @@
 
   .whats-on__rows {
     grid-row: 3;
-    padding-top: calc(38svh + 16px);
+    padding-top: calc(38svh + 56px);
+  }
+
+  /* Zero-height strip pinned to the photo's bottom edge: a dark gradient so rows fade out
+     as they slide up under the photo instead of being cut off. */
+  .whats-on__fade {
+    position: sticky;
+    top: calc(var(--rail-h) + 38svh);
+    z-index: 2;
+    height: 0;
+    pointer-events: none;
+  }
+
+  .whats-on__fade::before {
+    content: '';
+    position: absolute;
+    inset: 0 calc(var(--margin) * -1) auto;
+    height: 56px;
+    background: linear-gradient(to bottom, var(--bg), transparent);
   }
 
   .whats-on__intro {
