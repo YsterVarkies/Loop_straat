@@ -57,6 +57,13 @@
 
 /* Centred by default via transform (not text-align/width), so the move to the top-left is one
    smooth slide — translateX and top both animate continuously, nothing swaps or snaps partway. */
+/* Smaller than the global display size on desktop; phones keep the full size. */
+@media (min-width: 900px) {
+  .arch-walk__half {
+    font-size: clamp(3rem, 0.5rem + 6vw, 7.5rem);
+  }
+}
+
 .arch-walk__half--top {
   left: var(--margin);
   top: calc(var(--rail-h) + 3vh);
