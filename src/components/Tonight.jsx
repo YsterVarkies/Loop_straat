@@ -39,7 +39,7 @@ export default function Tonight({ large = false }) {
           {happy && <span>{happy} </span>}
           {tonight ? (
             <span>
-              Tonight: <strong>{tonight.title}</strong>, {tonight.start}, {tonight.price}.
+              Tonight: <strong>{tonight.title}</strong>, {[tonight.start, tonight.price].filter(Boolean).join(', ')}.
             </span>
           ) : next ? (
             <span>

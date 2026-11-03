@@ -15,6 +15,8 @@ Checked on 29 October 2026 against Loop St.'s own live sources. Everything edita
 **Facebook / Instagram**
 - Email looptherestaurant@gmail.com.
 - Event listings (Frank Freeman & Schwabie; Neil Sandilands with Jaco Mans), recent shows, "no under 21s".
+- Instagram stories, 3 Nov 2026: Etienne Steyn live (Tue 3 Nov, 16:00) and "Twee Stemme, Een Verhaal" with
+  Wouter van de Venter & Etienne Steyn (Sat 7 Nov, 18:00). Neither poster gives a price, so the site shows none.
 
 **The Go-To Guy article** (19 April 2025)
 - Founders Riaan May and Mitchell Coetzee; the Bult; the deck over the Fanie du Toit Sports Ground; the

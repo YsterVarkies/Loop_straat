@@ -31,8 +31,12 @@ const fromRegular = r => ({
   book: false
 });
 
+const PHONE = '(max-width: 899px)';
+
 // Sticky photograph, active list: the photograph on the left follows the row you point at,
 // focus or scroll to the middle of the screen. Upcoming shows first, then the regular nights.
+// On a phone every row stays open: opening one and closing the one above as you scrolled
+// pulled the text you were reading up the screen.
 export default function WhatsOn({
   id = 'whats-on',
   heading = 'Upcoming events',
@@ -46,8 +50,16 @@ export default function WhatsOn({
     return [...upcomingEvents(now).map(e => fromEvent(e, now)), ...(regularsToo ? regulars.map(fromRegular) : [])];
   }, [regularsToo]);
   const [active, setActive] = useState(0);
+  const [phone, setPhone] = useState(() => window.matchMedia(PHONE).matches);
   const listRef = useRef(null);
   useStagger(listRef, '.whats-on__row', { deps: [items] });
+
+  useEffect(() => {
+    const query = window.matchMedia(PHONE);
+    const onChange = () => setPhone(query.matches);
+    query.addEventListener('change', onChange);
+    return () => query.removeEventListener('change', onChange);
+  }, []);
 
   useEffect(() => {
     const rows = listRef.current?.querySelectorAll('[data-row]');
@@ -103,7 +115,7 @@ export default function WhatsOn({
                   <button
                     type="button"
                     className="whats-on__head"
-                    aria-expanded={i === active}
+                    aria-expanded={phone || i === active}
                     aria-controls={`${id}-${item.id}`}
                     onClick={() => setActive(i)}
                     onFocus={() => setActive(i)}
@@ -111,7 +123,7 @@ export default function WhatsOn({
                     <span className="whats-on__name t-lead">{item.title}</span>
                     <span className="whats-on__when t-small">{item.when}</span>
                   </button>
-                  <div id={`${id}-${item.id}`} className="whats-on__desc" hidden={i !== active}>
+                  <div id={`${id}-${item.id}`} className="whats-on__desc" hidden={!phone && i !== active}>
                     {item.meta && <p className="whats-on__meta">{item.meta}</p>}
                     <p>{item.blurb}</p>
                     {item.book && (

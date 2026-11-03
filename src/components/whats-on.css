@@ -89,10 +89,11 @@
    so the list doesn't rush past before you can read it. */
 .whats-on__head {
   display: flex;
+  flex-wrap: wrap;
   width: 100%;
   align-items: baseline;
   justify-content: space-between;
-  gap: 24px;
+  gap: 4px 24px;
   min-height: 112px;
   padding-block: 30px;
   text-align: left;
@@ -139,7 +140,8 @@
   }
 }
 
-/* Phone: heading and tonight's line first, then the photograph pinned as a band while the list scrolls beneath. */
+/* Phone: heading and tonight's line first, then the photograph as a band, then every row open
+   (see WhatsOn.jsx). The band is not pinned, so nothing slides under it while you read. */
 @media (max-width: 899px) {
   .whats-on__intro,
   .whats-on__rows,
@@ -157,27 +159,43 @@
   }
 
   .whats-on__photo {
-    top: var(--rail-h);
-    z-index: 2;
+    position: relative;
+    top: auto;
     aspect-ratio: auto;
     height: 38svh;
     margin-inline: calc(var(--margin) * -1);
   }
 
+  /* No buffer below the list: that is only there for desktop's sticky photo. */
   .whats-on__rows {
     padding-top: 16px;
-    /* The mobile photo is a short 38svh band, not the full screen, so it needs far less buffer
-       below the list than desktop's sticky sidebar does — 70vh there was leaving a big blank
-       gap here before the next section. */
-    padding-bottom: 12vh;
+    padding-bottom: 0;
   }
 
   .whats-on__title {
     margin-bottom: 28px;
   }
 
+  /* Name above the date, and the date free to wrap: "Wednesdays at 19:00, when announced" ran
+     off the right edge of the screen on one line. */
   .whats-on__head {
-    min-height: 88px;
-    padding-block: 22px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    min-height: 0;
+    padding-block: 22px 12px;
+  }
+
+  .whats-on__when {
+    white-space: normal;
+  }
+
+  /* Every row is open here, so none of them is the dimmed, closed one. */
+  .whats-on__name {
+    color: var(--ink);
+  }
+
+  .whats-on__desc {
+    padding-bottom: 28px;
   }
 }

@@ -1,24 +1,33 @@
 // Events at Loop St. Add new shows to `events`; they drop off the home page by themselves once their date has passed.
 // Dates are South African time. `photo` is a slug from src/data/photos.js; `poster` (optional) is a path in /public.
 //
-// status: 'verified'    checked against Loop St.'s own posts on 29 Oct 2026
+// status: 'verified'    checked against Loop St.'s own posts (when and where is in `source`)
 //         'partial'     the night exists (named on Loop St.'s Instagram) but the details are placeholders
 //         'placeholder' invented wording for the owner to replace
+// `price` and `tickets` can be left out when the poster doesn't give them.
 
 export const events = [
   {
-    id: 'frank-freeman-schwabie',
-    title: 'Frank Freeman & Schwabie',
-    kind: 'Loop live music',
-    date: '2026-10-29',
-    start: '19:00',
-    price: 'R150',
-    tickets: 'Tickets at the door',
-    blurb:
-      'Raw energy meets good soul music. Frank Freeman opens with his alternative rock before Schwabie takes the stage.',
+    id: 'etienne-steyn-2026-11-03',
+    title: 'Etienne Steyn',
+    kind: 'Live music',
+    date: '2026-11-03',
+    start: '16:00',
+    blurb: 'Etienne Steyn plays live at Loopstraat from four in the afternoon.',
+    photo: 'courtyard-guitarist',
+    status: 'verified',
+    source: 'Loop St. Instagram story, 3 Nov 2026 ("Live tonight Etienne Steyn", Loopstraat, Potchefstroom, 16:00 Tuesday 3 Nov 2026). No price on the poster.'
+  },
+  {
+    id: 'twee-stemme-een-verhaal',
+    title: 'Twee Stemme, Een Verhaal',
+    kind: 'Wouter van de Venter & Etienne Steyn',
+    date: '2026-11-07',
+    start: '18:00',
+    blurb: 'Stories, laughter and nostalgia, with the most beautiful Afrikaans music.',
     photo: 'two-guitars',
     status: 'verified',
-    source: 'Loop St. Facebook and Instagram post, 14 Oct 2026 ("Loop Live Music", Do 29 Oktober 2026, 19:00, R150, kaartjies by die deur)'
+    source: 'Loop St. Instagram story, 3 Nov 2026 ("Twee stemme, een verhaal", Wouter van de Venter & Etienne Steyn, Saterdag 7 Nov 2026, 18:00; "Stories. Lag. Nostalgie. Die mooiste Afrikaanse musiek."). No price on the poster.'
   },
   {
     id: 'neil-sandilands',
@@ -76,6 +85,7 @@ export const regulars = [
 
 // Recent shows, for the events page. Newest first.
 export const pastEvents = [
+  { title: 'Frank Freeman & Schwabie', date: '2026-10-29', note: 'R150', source: 'Facebook and Instagram post' },
   { title: 'Loop quiz night', date: '2026-09-02', source: 'Instagram poster' },
   { title: 'Acoustic evening with Landré', date: '2026-08-27', source: 'Instagram poster' },
   { title: 'Valiant Swart & Illmar Neitz', date: '2025-11-08', note: 'R249', source: 'Instagram post' },

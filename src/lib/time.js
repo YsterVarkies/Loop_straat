@@ -76,7 +76,8 @@ export function upcomingEvents(now = nowAtLoop()) {
 
 export const tonightsEvent = (now = nowAtLoop()) => events.find(e => e.date === now.iso) || null;
 
-const dayFmt = new Intl.DateTimeFormat('en-ZA', { weekday: 'short', day: 'numeric', month: 'short', timeZone: 'UTC' });
+// en-GB, not en-ZA, for the short form: en-ZA pads the day ("Sat, 07 Nov").
+const dayFmt = new Intl.DateTimeFormat('en-GB', { weekday: 'short', day: 'numeric', month: 'short', timeZone: 'UTC' });
 const longFmt = new Intl.DateTimeFormat('en-ZA', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
 
 // "Thu 29 Oct" from "2026-10-29".
