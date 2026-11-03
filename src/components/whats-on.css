@@ -73,17 +73,6 @@
   object-fit: contain;
 }
 
-/* Only used on phones, where the photo is a pinned band. */
-.whats-on__fade {
-  display: none;
-}
-
-@media (max-width: 899px) {
-  .whats-on__fade {
-    display: block;
-  }
-}
-
 .whats-on__title {
   margin-bottom: 40px;
 }
@@ -96,18 +85,13 @@
   padding-block: 4px;
 }
 
-/* Taller rows give the sticky photo more scroll distance to cross-fade through,
-   so the list doesn't rush past before you can read it. */
 .whats-on__head {
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
   align-items: baseline;
   justify-content: space-between;
   gap: 4px 24px;
-  min-height: 112px;
-  padding-block: 30px;
-  text-align: left;
+  padding-block: 28px 12px;
 }
 
 .whats-on__name {
@@ -120,11 +104,8 @@
   white-space: nowrap;
 }
 
+/* The row the photo is showing. */
 .whats-on__row.is-active .whats-on__name {
-  color: var(--ink);
-}
-
-.whats-on__head:hover .whats-on__name {
   color: var(--ink);
 }
 
@@ -133,7 +114,6 @@
   gap: 10px;
   max-width: 40ch;
   padding-bottom: 44px;
-  animation: desc-in 0.6s var(--ease-out) both;
 }
 
 .whats-on__meta {
@@ -144,50 +124,14 @@
   margin-top: 40px;
 }
 
-@keyframes desc-in {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-}
-
-/* Phone: heading and tonight's line first, then the photograph pinned as a band while the list scrolls beneath.
-   Every row is open here (see WhatsOn.jsx), so nothing opens or closes, and moves, as you scroll. */
+/* Phone: heading and tonight's line first, then the photograph as a band that scrolls away with
+   the page (not pinned), then the list. */
 @media (max-width: 899px) {
   .whats-on__intro,
   .whats-on__rows,
   .whats-on__photo-col {
     grid-column: 1 / -1;
     grid-row: auto;
-  }
-
-  /* The photo's column spans the list's grid row as well as its own, so the band has the whole
-     list to stick through. The list starts below it (the padding is the band's height). */
-  .whats-on__photo-col {
-    grid-row: 2 / span 2;
-  }
-
-  .whats-on__rows {
-    grid-row: 3;
-    padding-top: calc(38svh + 56px);
-  }
-
-  /* Zero-height strip pinned to the photo's bottom edge: a dark gradient so rows fade out
-     as they slide up under the photo instead of being cut off. */
-  .whats-on__fade {
-    position: sticky;
-    top: calc(var(--rail-h) + 38svh);
-    z-index: 2;
-    height: 0;
-    pointer-events: none;
-  }
-
-  .whats-on__fade::before {
-    content: '';
-    position: absolute;
-    inset: 0 calc(var(--margin) * -1) auto;
-    height: 56px;
-    background: linear-gradient(to bottom, var(--bg), transparent);
   }
 
   .whats-on__intro {
@@ -199,18 +143,17 @@
   }
 
   .whats-on__photo {
-    top: var(--rail-h);
-    z-index: 2;
+    position: relative;
+    top: auto;
     aspect-ratio: auto;
     height: 38svh;
     margin-inline: calc(var(--margin) * -1);
   }
 
+  /* No buffer below the list: that only gives desktop's sticky photo room. */
   .whats-on__rows {
-    /* The mobile photo is a short 38svh band, not the full screen, so it needs far less buffer
-       below the list than desktop's sticky sidebar does — 70vh there was leaving a big blank
-       gap here before the next section. */
-    padding-bottom: 12vh;
+    padding-top: 16px;
+    padding-bottom: 0;
   }
 
   .whats-on__title {
@@ -223,7 +166,6 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 6px;
-    min-height: 0;
     padding-block: 22px 12px;
   }
 
@@ -231,7 +173,7 @@
     white-space: normal;
   }
 
-  /* Every row is open here, so none of them is the dimmed, closed one. */
+  /* The photo is a band above the list here, not beside it, so no row is dimmed to point at it. */
   .whats-on__name {
     color: var(--ink);
   }

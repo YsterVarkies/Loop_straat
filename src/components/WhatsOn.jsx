@@ -31,12 +31,10 @@ const fromRegular = r => ({
   book: false
 });
 
-const PHONE = '(max-width: 899px)';
-
-// Sticky photograph, active list: the photograph on the left follows the row you point at,
-// focus or scroll to the middle of the screen. Upcoming shows first, then the regular nights.
-// On a phone every row stays open: opening one and closing the one above as you scrolled
-// pulled the text you were reading up the screen.
+// Sticky photograph, open list: the photograph follows the row you point at, focus into or
+// scroll to the middle of the screen. Upcoming shows first, then the regular nights.
+// Every row stays open: opening one and closing the one above as you scrolled pulled the text
+// you were reading up the screen.
 export default function WhatsOn({
   id = 'whats-on',
   heading = 'Upcoming events',
@@ -50,16 +48,8 @@ export default function WhatsOn({
     return [...upcomingEvents(now).map(e => fromEvent(e, now)), ...(regularsToo ? regulars.map(fromRegular) : [])];
   }, [regularsToo]);
   const [active, setActive] = useState(0);
-  const [phone, setPhone] = useState(() => window.matchMedia(PHONE).matches);
   const listRef = useRef(null);
   useStagger(listRef, '.whats-on__row', { deps: [items] });
-
-  useEffect(() => {
-    const query = window.matchMedia(PHONE);
-    const onChange = () => setPhone(query.matches);
-    query.addEventListener('change', onChange);
-    return () => query.removeEventListener('change', onChange);
-  }, []);
 
   useEffect(() => {
     const rows = listRef.current?.querySelectorAll('[data-row]');
@@ -102,7 +92,6 @@ export default function WhatsOn({
               )
             )}
           </div>
-          <div className="whats-on__fade" aria-hidden="true" />
         </div>
         <div className="whats-on__rows">
             <ul className="whats-on__list" ref={listRef}>
@@ -112,19 +101,13 @@ export default function WhatsOn({
                   data-row={i}
                   className={`whats-on__row ${i === active ? 'is-active' : ''}`}
                   onMouseEnter={() => setActive(i)}
+                  onFocus={() => setActive(i)}
                 >
-                  <button
-                    type="button"
-                    className="whats-on__head"
-                    aria-expanded={phone || i === active}
-                    aria-controls={`${id}-${item.id}`}
-                    onClick={() => setActive(i)}
-                    onFocus={() => setActive(i)}
-                  >
-                    <span className="whats-on__name t-lead">{item.title}</span>
+                  <div className="whats-on__head">
+                    <h3 className="whats-on__name t-lead">{item.title}</h3>
                     <span className="whats-on__when t-small">{item.when}</span>
-                  </button>
-                  <div id={`${id}-${item.id}`} className="whats-on__desc" hidden={!phone && i !== active}>
+                  </div>
+                  <div className="whats-on__desc">
                     {item.meta && <p className="whats-on__meta">{item.meta}</p>}
                     <p>{item.blurb}</p>
                     {item.book && (
