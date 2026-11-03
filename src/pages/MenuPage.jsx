@@ -35,7 +35,7 @@ export default function MenuPage() {
   usePageMeta({
     title: 'Menu | Loop St., Potchefstroom',
     description:
-      'The Loop St. menu: homemade kudu burgers, Loop-style tacos, nachos, the snack shack, house cocktails, mocktails, beer, wine, rum and brandy, with prices in rand.'
+      'The Loop St. menu: kudu smash burgers, sourdough pizza, street eats, fresh bowls, the snack shack, cocktails, mocktails, wine, whisky, gin, rum and tequila, with prices in rand.'
   });
   const [filter, setFilter] = useState('all');
   const [active, setActive] = useState(menuSections[0].id);
@@ -69,7 +69,7 @@ export default function MenuPage() {
     <>
       <PageHead
         title="The menu"
-        sentence="Homemade kudu burgers, Loop-style tacos and plates to share, with house cocktails and a long rum shelf."
+        sentence="Kudu smash burgers, sourdough pizza and plates to share, with house cocktails and a long shelf of gin, rum and whisky."
         photo="the-bar"
       >
         <div className="menu-filter" role="group" aria-label="Show dishes that are">
@@ -159,7 +159,9 @@ export default function MenuPage() {
               </p>
             )}
             <p className="menu-page__small muted">
-              Prices in rand and subject to change. Beer prices are as last chalked up on the board.
+              Prices in rand and subject to change. Vegetarian, vegan and gluten-free dishes are available with the substitutions
+              the menu names; please tell your server about any allergies. A 10% service charge is added to your bill. Our food and
+              cocktails are made fresh, so they may take a little extra time.
             </p>
           </div>
         </div>
