@@ -122,10 +122,12 @@
   z-index: 60;
   display: flex;
   flex-direction: column;
-  gap: 40px;
-  padding: 0 var(--margin) 32px;
+  gap: clamp(20px, 5svh, 40px);
+  padding: 0 var(--margin) max(32px, env(safe-area-inset-bottom));
   background: var(--bg);
   overflow-y: auto;
+  /* Scrolling the panel on a short phone must not pass on to the page behind it. */
+  overscroll-behavior: contain;
 }
 
 .rail__panel[hidden] {
@@ -232,5 +234,13 @@ html.is-locked {
 @media (max-width: 559px) {
   .rail:not(.rail--home) .rail__what {
     display: none;
+  }
+}
+
+/* A short phone (small screen, or the browser's own bars showing): pull the pages list in so the
+   book button and address stay on screen without scrolling. */
+@media (max-height: 640px) {
+  .rail__panel-links {
+    gap: 2px;
   }
 }

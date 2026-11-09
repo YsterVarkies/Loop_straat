@@ -31,7 +31,8 @@
 }
 
 .prices__group-title {
-  font-size: 50px;
+  /* 50px on desktop, easing down to ~32px on a phone so names like "White & rosé by the bottle" don't run to three lines. */
+  font-size: clamp(2rem, 1.2rem + 3.6vw, 3.125rem);
   font-weight: 700;
   letter-spacing: -0.01em;
   line-height: 1.2;
@@ -58,25 +59,53 @@
 
 .prices__items {
   margin-top: 18px;
+  display: grid;
+  /* One column that can never be wider than the group: without minmax(0, …) a single long
+     row stretches the whole grid track past the screen edge and clips every price in the group. */
+  grid-template-columns: minmax(0, 1fr);
+  gap: 18px;
 }
 
-.prices__items {
-  display: grid;
-  gap: 18px;
+.prices__item {
+  min-width: 0;
 }
 
 .prices__row {
   display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
   justify-content: space-between;
-  gap: 20px;
+  column-gap: 20px;
+  row-gap: 2px;
 }
 
 .prices__name {
+  min-width: 0;
   font-weight: 500;
+  overflow-wrap: anywhere;
 }
 
 .prices__price {
+  margin-left: auto;
+  white-space: nowrap;
+  text-align: right;
+}
+
+/* An item with several options (sizes, protein choices): the set sits on its own line under the
+   name, left-aligned, at every screen size, so these rows look the same everywhere. The options
+   wrap between each other if the line is too narrow. */
+.prices__price--options {
+  display: flex;
+  flex: 1 0 100%;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  column-gap: 1.25em;
+  margin-left: 0;
+  white-space: normal;
+  text-align: left;
+}
+
+.prices__option {
   white-space: nowrap;
 }
 

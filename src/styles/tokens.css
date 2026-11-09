@@ -22,7 +22,9 @@
   --step-head: clamp(2rem, 1.6rem + 0.9vw, 2.75rem);
   --step-display: clamp(3.25rem, 0.5rem + 8.6vw, 10.5rem);
 
-  --margin: clamp(16px, 2.2vw, 32px);
+  /* Side margin. The page uses viewport-fit=cover, so on a phone held sideways the margin also
+     has to clear the camera cut-out: take whichever is larger. */
+  --margin: max(clamp(16px, 2.2vw, 32px), env(safe-area-inset-left, 0px), env(safe-area-inset-right, 0px));
   --gap: clamp(16px, 1.8vw, 28px);
   --section: clamp(112px, 13vw, 200px);
   --rail-h: 108px;

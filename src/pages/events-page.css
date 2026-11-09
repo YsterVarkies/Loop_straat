@@ -58,4 +58,12 @@
   .past__list {
     margin-top: 40px;
   }
+
+  /* Title above its date on every row. Left to wrap on its own, short titles put the date beside
+     them on the right while longer ones push it underneath, so the list looks ragged. */
+  .past__row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
 }

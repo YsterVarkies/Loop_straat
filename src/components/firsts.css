@@ -71,9 +71,21 @@
 }
 
 @media (max-width: 899px) {
+  /* On a phone the captions sit under their photographs, so a pinned title would sit on top of
+     the words as they scroll past and make them unreadable. Here it is an ordinary heading, the
+     photographs are shown at full brightness, and the section ends where its last caption does. */
+  .firsts__pin {
+    position: static;
+  }
+
+  .firsts__item img {
+    filter: none;
+  }
+
   .firsts__list {
     gap: 48px;
-    padding-bottom: 24svh;
+    margin-top: 40px;
+    padding-bottom: 0;
   }
 
   .firsts__item,

@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import Picture from './Picture.jsx';
+import { joinWithDots } from './Dot.jsx';
 import { Heading, Reveal, RevealPicture } from './Reveal.jsx';
 import { useStagger } from '../lib/useStagger.js';
 import './prices.css';
@@ -19,8 +20,13 @@ export function PriceGroup({ group, as: Title = 'h3', filter }) {
       <ul className="prices__items">
         {items.map(item => {
           let price;
-          if (item.priceLabel) price = item.priceLabel;
-          else if (item.price === null || item.price === undefined) price = 'Ask us';
+          // Several options ("Black bean R129 · Chicken R145 · Pork R155") are kept as separate
+          // pieces so they can wrap between options on a narrow screen instead of running off it.
+          let options = null;
+          if (item.priceLabel) {
+            price = item.priceLabel;
+            if (price.includes(' · ')) options = price.split(' · ');
+          } else if (item.price === null || item.price === undefined) price = 'Ask us';
           else {
             price = shown ? String(item.price) : `R${item.price}`;
             shown = true;
@@ -29,10 +35,20 @@ export function PriceGroup({ group, as: Title = 'h3', filter }) {
             <li key={item.name} className="prices__item">
               <div className="prices__row">
                 <span className="prices__name">{item.name}</span>
-                <span className="prices__price tnum">{price}</span>
+                {options ? (
+                  <span className="prices__price prices__price--options tnum">
+                    {options.map(option => (
+                      <span key={option} className="prices__option">
+                        {option}
+                      </span>
+                    ))}
+                  </span>
+                ) : (
+                  <span className="prices__price tnum">{price}</span>
+                )}
               </div>
               {item.description && <p className="prices__desc">{item.description}</p>}
-              {item.tags?.length > 0 && <p className="prices__tags">{item.tags.map(t => TAG_LABEL[t] || t).join(' · ')}</p>}
+              {item.tags?.length > 0 && <p className="prices__tags">{joinWithDots(item.tags.map(t => TAG_LABEL[t] || t))}</p>}
             </li>
           );
         })}

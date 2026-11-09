@@ -84,4 +84,9 @@
   .call__social {
     gap: 20px;
   }
+
+  .call__foot a {
+    display: inline-block;
+    padding-block: 8px;
+  }
 }

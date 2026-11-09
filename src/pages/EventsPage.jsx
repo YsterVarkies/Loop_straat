@@ -5,6 +5,7 @@ import WhatsOn from '../components/WhatsOn.jsx';
 import PriceList from '../components/PriceList.jsx';
 import Picture from '../components/Picture.jsx';
 import CallBand from '../components/CallBand.jsx';
+import { joinWithDots } from '../components/Dot.jsx';
 import { Heading, Reveal, RevealPicture } from '../components/Reveal.jsx';
 import { functions, pastEvents } from '../data/events.js';
 import { specials } from '../data/specials.js';
@@ -93,7 +94,7 @@ export default function EventsPage() {
             {pastEvents.map(e => (
               <li key={e.title} className="past__row">
                 <span className="t-lead">{e.title}</span>
-                <span className="muted">{[e.date ? longDate(e.date) : null, e.note].filter(Boolean).join(' · ')}</span>
+                <span className="muted">{joinWithDots([e.date ? longDate(e.date) : null, e.note])}</span>
               </li>
             ))}
           </ul>

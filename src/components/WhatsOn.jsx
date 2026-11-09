@@ -2,6 +2,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Picture from './Picture.jsx';
 import Tonight from './Tonight.jsx';
+import { joinWithDots } from './Dot.jsx';
 import { Heading, Reveal } from './Reveal.jsx';
 import { regulars } from '../data/events.js';
 import { site } from '../data/site.js';
@@ -13,8 +14,8 @@ import './whats-on.css';
 const fromEvent = (e, now) => ({
   id: e.id,
   title: e.title,
-  when: `${relativeDay(e.date, now)} · ${e.start}`,
-  meta: [e.kind, e.price, e.tickets].filter(Boolean).join(' · '),
+  when: joinWithDots([relativeDay(e.date, now), e.start]),
+  meta: joinWithDots([e.kind, e.price, e.tickets]),
   blurb: e.blurb,
   photo: e.photo,
   poster: e.poster,

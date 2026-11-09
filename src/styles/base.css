@@ -158,6 +158,18 @@ button {
   font-variant-numeric: tabular-nums lining-nums;
 }
 
+/* A dot between short facts. Drawn, not typed: the font's own middle dot has zero width. */
+.dot {
+  display: inline-block;
+  width: 0.22em;
+  height: 0.22em;
+  margin-inline: 0.6em;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.7;
+  vertical-align: 0.28em;
+}
+
 .t-small {
   font-size: var(--step-small);
   line-height: 1.45;

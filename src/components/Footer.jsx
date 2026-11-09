@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { nav, site } from '../data/site.js';
 import { asset } from '../lib/asset.js';
+import { joinWithDots } from './Dot.jsx';
 import './footer.css';
 
 // A single quiet line: what this is, the pages, the year.
@@ -23,9 +24,7 @@ export default function Footer() {
             ))}
           </ul>
         </nav>
-        <p className="footer__small">
-          © {new Date().getFullYear()} Loop St. · No under 21s · Drink responsibly
-        </p>
+        <p className="footer__small">{joinWithDots([`© ${new Date().getFullYear()} Loop St.`, 'No under 21s', 'Drink responsibly'])}</p>
       </div>
     </footer>
   );
